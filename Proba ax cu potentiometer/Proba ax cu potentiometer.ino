@@ -2,11 +2,13 @@
 #include <Arduino.h>
 #include <AX12A.h>
 
-#define ID  (16u)
+#define ID1  (16u)
+#define ID2  (6u)
+#define ID3  (11u)
 
-  int sensorVal = 0;
+  int sensorVal1, sensorVal2, sensorVal3 = 0;
   int Val = 0;
-  int Poz;
+  int Poz1, Poz2, Poz3;
 
 void setup() {
  
@@ -17,22 +19,45 @@ void setup() {
 }
 
 void loop() {
-  ax12a.ledStatus(ID, OFF);
+  ax12a.ledStatus(ID1, OFF);
+  ax12a.ledStatus(ID2, OFF);
+  ax12a.ledStatus(ID3, OFF);
   delay(1000);
  
-  sensorVal = analogRead(A0);
-  Serial.println(sensorVal);
-if (sensorVal != Val){
-  Poz = sensorVal;
+  sensorVal1 = analogRead(A0);
+  Serial.println(sensorVal1);
+
+  sensorVal2 = analogRead(A1);
+  Serial.println(sensorVal2);
+
+  sensorVal3 = analogRead(A3);
+  Serial.println(sensorVal3);
+
+if (sensorVal1 != Val){
+  Poz1 = sensorVal1;
   Action();
+  ax12a.ledStatus(ID1, ON);
+}
+
+if (sensorVal2 != Val){
+  Poz2 = sensorVal2;
+  Action();
+  ax12a.ledStatus(ID2, ON);
+}
+
+if (sensorVal3 != Val){
+  Poz3 = sensorVal3;
+  Action();
+  ax12a.ledStatus(ID3, ON);
 }
 
 }
 void Action(){
 
-  ax12a.moveSpeed(ID,Poz,100);
-  ax12a.ledStatus(ID, ON);
-
+  ax12a.moveSpeed(ID1,Poz1,100);
+  ax12a.moveSpeed(ID2,Poz2,100);
+  ax12a.moveSpeed(ID3,Poz3,100);
+  
   delay(2000);
   
   
