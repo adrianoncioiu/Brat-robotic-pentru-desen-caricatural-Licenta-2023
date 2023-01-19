@@ -2,23 +2,46 @@ import cv2
 from PIL import Image
 import numpy as np
 
-poza = cv2.imread('blabla.jpg', 1)
-#poza = cv2.VideoCapture(0)
+#poza din fisier
+#poza = cv2.imread('blabla.jpg', 1)
 
+#Poza facuta cu webcam
+image = cv2.VideoCapture(0)
+result, poza = image.read()
+cv2.imshow('poza', poza)
+cv2.waitKey(1000)
+
+#dimensionare pentru spatiu de lucru
 img_half = cv2.resize(poza, (500, 500), fx=0.5, fy=0.5)
 cv2.imshow('Resized_img', img_half)
 cv2.waitKey(1000)
 
-im_gray = cv2.cvtColor(img_half, cv2.COLOR_RGB2GRAY)
+#eroziune si dilatare imagine
+img_erosion = cv2.erode(img_half, (200, 200), iterations=20)
+cv2.imshow('Erosion', img_erosion)
+cv2.waitKey(1000)
+img_dilation = cv2.dilate(img_erosion, (200, 200), iterations=5)
+cv2.imshow('Dilation', img_dilation)
+cv2.waitKey(1000)
+
+#blur imagine pentru a diminua zgomotele
+img_blur = cv2.blur(img_dilation, (5, 5))
+cv2.imshow('Blur', img_blur)
+cv2.waitKey(1000)
+
+#culori monocrome imagine pentru a diminua zgomotele
+im_gray = cv2.cvtColor(img_blur, cv2.COLOR_RGB2GRAY)
 cv2.imshow('Grayscale', im_gray)
 cv2.waitKey(1000)
 
+#transormare imagine binara
 (thresh, im_bw) = cv2.threshold(im_gray, 35, 255, cv2.THRESH_BINARY)
 #im_bw //= 255
 
 cv2.imshow('binary_img', im_bw)
 cv2.imwrite('poza_binary.jpg', im_bw)
 cv2.waitKey(4000)
+
 
 im = Image.open('poza_binary.jpg')
 pixels = list(im.getdata())
