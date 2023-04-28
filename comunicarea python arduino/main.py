@@ -1,21 +1,13 @@
 import serial
 
-# Inițializează conexiunea serială cu Arduino
-ser = serial.Serial('COM3', 1000000)
+ser = serial.Serial('COM3', 1000000)  # deschidem comunicarea seriala cu Arduino
+print("Conectare cu Arduino...")
 
-# Funcție pentru a trimite o comandă la Arduino
-def send_command(command):
-    ser.write(command.encode())
-
-# Meniu pentru a alege motorul și comanda dorită
 while True:
-    print('1. Mișcă primul motor la poziția 512')
-    print('2. Mișcă al doilea motor la poziția 512')
-    print('3. Mișcă al treilea motor la poziția 512')
-    choice = input('Alege o opțiune: ')
-
-    # Trimite comanda la Arduino
-    send_command(choice)
-
+    input_data = input("Introduceti 1 pentru aprinderea LED-ului sau 0 pentru starea LED-ului: ")
+    ser.write(input_data.encode())  # trimitem datele la Arduino
     #response = ser.readline().decode().strip()  # citim raspunsul de la Arduino
     #print(response)  # afisam raspunsul
+else:
+    print("Introduceti o valoare valida (0 sau 1)")
+11

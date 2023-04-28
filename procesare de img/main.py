@@ -3,11 +3,11 @@ from PIL import Image
 import numpy as np
 
 #poza din fisier
-#poza = cv2.imread('blabla.jpg', 1)
+poza = cv2.imread('blabla.jpg', 1)
 
 #Poza facuta cu webcam
-image = cv2.VideoCapture(0)
-result, poza = image.read()
+#image = cv2.VideoCapture(0)
+#result, poza = image.read()
 cv2.imshow('poza', poza)
 cv2.waitKey(1000)
 

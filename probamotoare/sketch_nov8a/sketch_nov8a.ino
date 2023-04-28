@@ -1,8 +1,8 @@
 #include <DynamixelSerial.h>
 
 int id1 = 11;
-int id2 = 6;
-int id3 = 16;
+int id2 = 16;
+
 
 void setup(){
 Dynamixel.setSerial(&Serial);
@@ -45,22 +45,7 @@ delay(1000);
   Dynamixel.action();
   Dynamixel.ledStatus(id2,OFF);
 
-    Dynamixel.move(id3,random(200,800));  // 200 to 800
-  delay(1000);
-  Dynamixel.moveSpeed(id3,random(200,800),random(200,800));
-  delay(2000);
-  Dynamixel.setEndless(id3,ON);
-  Dynamixel.turn(id3,RIGTH,1000);
-  delay(3000);
-  Dynamixel.turn(id3,LEFT,1000);
-  delay(3000);
-  Dynamixel.setEndless(id3,OFF);
-  Dynamixel.ledStatus(id3,ON);
-  Dynamixel.moveRW(id3,512);
-  delay(1000);
-  Dynamixel.action();
-  Dynamixel.ledStatus(id3,OFF);
- 
+
 delay(1000);
  
 delay(1000);

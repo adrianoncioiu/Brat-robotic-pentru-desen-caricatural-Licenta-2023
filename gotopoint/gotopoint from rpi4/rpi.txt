@@ -1,0 +1,11 @@
+import serial
+
+ser = serial.Serial("/dev/ttyAMA0", 1000000, timeout=1)
+while True:
+	x = input("Introduceti coordonatele x: ") 
+	y = input("Introduceti coordonatele y: ")
+	data = x + ',' + y + '\n' 
+	
+	ser.write(data.encode())
+	
+	

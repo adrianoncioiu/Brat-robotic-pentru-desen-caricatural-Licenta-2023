@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"90-07082021-007381";"";
+"REFERENCE";"050030840952";"";
+"TraceParts.PartTitle";"Machine Screws";"";
+"TraceParts.InstanceId";"90-07082021-007381ALHAUHBWOFLT7QLF1FB5CBP8I";"";
+"DESIGN";"_x000D_ Stainless Steel Slotted Drive Binder Head Machine Screw - Thread Size M3; Thread Length 8.0 mm | 0.315 in";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";
+"SUPPLIER";"Essentra Components";"";
+"TraceParts.PartVersion";"1.1.6";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"ESSENTRA_COMPONENTS:90-07082021-007381";"";
