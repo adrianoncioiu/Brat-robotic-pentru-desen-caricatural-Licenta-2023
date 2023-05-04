@@ -82,8 +82,8 @@ title('config final impus')
 %% PrototipVirtual
 
 % impunem o traiectorie limita in spatiul articular
-q=[-pi,pi;...
-   -pi/2,pi/2]; % [q1;q2]
+q=[-pi/2,-pi;...
+   -pi/2,-pi]; % [q1;q2]
 % Durata
 T=5; %[s]
 % discret
@@ -125,7 +125,7 @@ title 'Puterea motoare'
 %
 figure
 hold
-fill([0,25,25,0],[0,0,25,25],'g')
+fill([0,5,5,0],[0,0,5,5],'g')
 plot(abs(out.T1_out.Data),abs(30*out.dq1_out.Data/pi),'LineWidth',2,'Color','b')
 plot(abs(out.T2_out.Data),abs(30*out.dq2_out.Data/pi),'LineWidth',2,'Color','r')
 grid
