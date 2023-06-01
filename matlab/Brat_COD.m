@@ -1,6 +1,7 @@
 %% Simularea si modelare Brat
 clear
 clc
+%%  
 % articulatiile de rotatie sunt in acest exemplu Rz,Rz, Ry 
 
 %% Dezvoltarea 1
@@ -41,7 +42,7 @@ Anim(Q1,Q2,Q3,2);
 % interpolate
 q=[0,pi;...
    0,pi;
-   0,pi;]; % [q1;q2;q3]
+   0,0;]; % [q1;q2;q3]
 % Durata
 T=60; %[s]
 % discret
@@ -83,7 +84,8 @@ title('config final impus')
 
 % impunem o traiectorie limita in spatiul articular
 q=[-pi/2,-pi;...
-   -pi/2,-pi]; % [q1;q2]
+    -pi/2,-pi;...
+   0,0]; % [q1;q2;q3]
 % Durata
 T=5; %[s]
 % discret

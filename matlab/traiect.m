@@ -13,7 +13,7 @@ function [Traiectorii,timp] = traiect(q,T,n,flag)
            Q=zeros(3,n);
            dQ=zeros(3,n);
            ddQ=zeros(3,n);
-           for i=1:2
+           for i=1:3
                a0=q(i,1);
                a1=0;
                a2=3*(q(i,2)-q(i,1))/T^2;
@@ -25,7 +25,7 @@ function [Traiectorii,timp] = traiect(q,T,n,flag)
                
            end
            if flag==1
-               for i=1:2
+               for i=1:3
                    figure
                    subplot(3,1,1)
                    plot(timp,Q(i,:),'b','linewidth',2)

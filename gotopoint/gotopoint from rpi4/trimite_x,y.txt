@@ -1,0 +1,30 @@
+import serial
+
+ser = serial.Serial("/dev/ttyAMA0", 1000000, timeout=1)
+
+# Dimensiunea imaginii
+width = 120
+height = 170
+
+# Intervalul de lucru
+x_start = 0.000
+y_start = 0.090
+x_end = 0.150
+y_end = 0.190
+x_step = 0.005
+y_step = 0.005
+
+# Parsarea datelor din fișierul "results.txt"
+with open("results.txt", "r") as f:
+    data = f.read().split("\n")
+    
+# Extrage coordonatele x, y și trimite-le către Arduino
+for y in range(height):
+    for x in range(width):
+        if data[y][x] == "1":
+            x_coord = x_start + x_step * x
+            y_coord = y_start + y_step * y
+            print("Coordonatele x, y:", x_coord, y_coord)
+            ser.write((str(x_coord) + "," + str(y_coord) + "\n").encode())
+            # Așteaptă 5 secunde
+            time.sleep(5)
