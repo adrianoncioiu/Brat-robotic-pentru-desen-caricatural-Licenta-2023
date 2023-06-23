@@ -7,7 +7,7 @@ import time
 #ser = serial.Serial("/dev/ttyUSB0", 1000000, timeout=1)
 
 #poza din fisier
-poza = cv2.imread('blabla3.jpeg', 1)
+poza = cv2.imread('blabla4.jpeg', 1)
 
 #Poza facuta cu webcam
 #image = cv2.VideoCapture(0)
@@ -22,7 +22,7 @@ cv2.imwrite('poza_redim.jpg', img_half)
 cv2.waitKey(1000)
 
 #eroziune si dilatare imagine
-img_erosion = cv2.erode(img_half, (100, 100), iterations=8)
+img_erosion = cv2.erode(img_half, (100, 100), iterations=6)
 cv2.imshow('Erosion', img_erosion)
 cv2.imwrite('poza_erodata.jpg', img_erosion)
 cv2.waitKey(1000)
@@ -32,7 +32,7 @@ cv2.imwrite('poza_dilatata.jpg', img_dilation)
 cv2.waitKey(1000)
 
 #blur imagine pentru a diminua zgomotele
-img_blur = cv2.blur(img_dilation, (5, 5))
+img_blur = cv2.GaussianBlur(img_dilation, (5, 5), 0)
 cv2.imshow('Blur', img_blur)
 cv2.imwrite('poza_blur.jpg', img_blur)
 cv2.waitKey(1000)
@@ -44,7 +44,7 @@ cv2.imwrite('poza_gri.jpg', im_gray)
 cv2.waitKey(1000)
 
 #transormare imagine binara
-(thresh, im_bw) = cv2.threshold(im_gray, 55, 255, cv2.THRESH_BINARY)
+(thresh, im_bw) = cv2.threshold(im_gray, 45, 255, cv2.THRESH_BINARY)
 #im_bw //= 255
 
 cv2.imshow('binary_img', im_bw)
@@ -69,17 +69,23 @@ for i in pixels:
         i = 1
     else:
         i = 0
-    #f.write("%s " % i)
+    f.write("%s " % i)
 #adaug valori in matrice
+
     j += 1
     lin = int(j / 170)
     col = j % 120
-
+    if col == 120:
+        col = 0
+        lin += 1
+        f.write("\n")
     mat[lin][col] = i
+
+'''
 #unde 1 trimit pe seriala
 for i in range(120):
     for j in range(170):
-        #f.write("%d " % mat[i][j])
+        f.write("%d " % mat[i][j])
 
         if mat[i][j]==1:
 
@@ -96,6 +102,7 @@ for i in range(120):
 
 
     #pentru linii
+'''
 '''
 for i in range(121):
     x1 = 0
